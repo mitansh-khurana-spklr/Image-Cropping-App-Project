@@ -88,17 +88,17 @@ struct CroppingPage: View {
                              GeometryReader { geometry in
                                  ZoomableView(uiImage: $uiImage, viewSize: geometry.size, frameWidth: $frameWidth, frameHeight: $frameHeight)
                              }
-//                             .frame(width: frameWidth, height: frameHeight)
-//                             .border(.white)
+                             .frame(width: frameWidth, height: frameHeight)
+                             .border(.white)
                              
                              
                              
-                             Rectangle()
-                                 .opacity(0.3)
-                                 .foregroundColor(.red)
-                                 .allowsHitTesting(false)
-                                 .frame(width: frameWidth, height: frameHeight)
-                                 .border(.white, width: 5)
+//                             Rectangle()
+//                                 .opacity(0.3)
+//                                 .foregroundColor(.red)
+//                                 .allowsHitTesting(false)
+//                                 .frame(width: frameWidth, height: frameHeight)
+//                                 .border(.white, width: 5)
                              //                                 .offset(x: viewState.width, y: viewState.height)
 //                                 .gesture(DragGesture().onChanged({ value in
 //                                     viewState = value.translation

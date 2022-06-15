@@ -76,6 +76,14 @@ struct ZoomableView: UIViewRepresentable {
 //        leadingConstraint.isActive = true
         
         
+        let topConstraint = imageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
+        topConstraint.identifier = Constraint.top.rawValue
+        topConstraint.isActive = true
+        
+        let leadingConstraint = imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
+        leadingConstraint.identifier = Constraint.leading.rawValue
+        leadingConstraint.isActive = true
+        
         let bottomConstraint = imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         bottomConstraint.identifier = Constraint.bottom.rawValue
         bottomConstraint.isActive = true
@@ -125,6 +133,15 @@ struct ZoomableView: UIViewRepresentable {
 //        leadingConstraint1.identifier = Constraint.leading.rawValue
 //        leadingConstraint1.isActive = true
         
+        let topConstraint1 = imageView1.topAnchor.constraint(equalTo: scrollView.topAnchor)
+        topConstraint1.identifier = Constraint.top.rawValue
+        topConstraint1.isActive = true
+        
+        let leadingConstraint1 = imageView1.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
+        leadingConstraint1.identifier = Constraint.leading.rawValue
+        leadingConstraint1.isActive = true
+                
+        
         let bottomConstraint = imageView1.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         bottomConstraint.identifier = Constraint.bottom.rawValue
         bottomConstraint.isActive = true
@@ -152,8 +169,8 @@ struct ZoomableView: UIViewRepresentable {
         context.coordinator.zoomableView = imageView
         context.coordinator.imageSize = uiImage.size
         context.coordinator.viewSize = viewSize
-        let topConstraint = scrollView.constraints.first { $0.identifier == Constraint.top.rawValue }
-        let leadingConstraint = scrollView.constraints.first { $0.identifier == Constraint.leading.rawValue }
+//        let topConstraint = scrollView.constraints.first { $0.identifier == Constraint.top.rawValue }
+//        let leadingConstraint = scrollView.constraints.first { $0.identifier == Constraint.leading.rawValue }
 //        context.coordinator.topConstraint = topConstraint1
 //        context.coordinator.leadingConstraint = leadingConstraint1
 //        context.coordinator.trailingConstraint = trailingConstraint
