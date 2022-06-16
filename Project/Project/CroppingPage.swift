@@ -88,25 +88,48 @@ struct CroppingPage: View {
                              GeometryReader { geometry in
                                  ZoomableView(uiImage: $uiImage, viewSize: geometry.size, frameWidth: $frameWidth, frameHeight: $frameHeight)
                              }
-                             .frame(width: frameWidth, height: frameHeight)
-                             .border(.white)
+//                             .frame(width: frameWidth, height: frameHeight)
+//                             .border(.white)
                              
                              
                              
-//                             Rectangle()
-//                                 .opacity(0.3)
-//                                 .foregroundColor(.red)
-//                                 .allowsHitTesting(false)
-//                                 .frame(width: frameWidth, height: frameHeight)
-//                                 .border(.white, width: 5)
-                             //                                 .offset(x: viewState.width, y: viewState.height)
-//                                 .gesture(DragGesture().onChanged({ value in
-//                                     viewState = value.translation
-//                                 }))
+                             ZStack {
+                                 Rectangle()
+                                     .opacity(0.01)
+                                     .allowsHitTesting(false)
+                                     .frame(width: frameWidth, height: frameHeight)
+                                 .border(.white, width: 3)
+                                 
+                                 Rectangle()
+                                     .allowsHitTesting(false)
+                                     .opacity(0.01)
+                                     .frame(width: frameWidth, height: frameHeight/3)
+                                     .border(.white, width: 0.75)
+                                 
+                                 Rectangle()
+                                     .allowsHitTesting(false)
+                                     .opacity(0.01)
+                                     .frame(width: frameWidth/3, height: frameHeight)
+                                     .border(.white, width: 0.75)
+                             }
+                             
+                             Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                 .font(.system(size: 20))
+                                 .background(Circle().frame(width: 25, height: 25).foregroundColor(.white))
+                                 .frame(width: frameWidth, height: frameHeight, alignment: .topLeading)
+                                 .foregroundColor(.black)
+                                 .offset(x: -5, y: -5)
+                                 .gesture(DragGesture()
+                                    .onChanged{drag in
+                                        let newOffset = drag.translation
+                                        
+                                    })
+                                 
                              
                              
                          }
-                         
+                        
+                        
                      }
                     
                     
@@ -118,6 +141,7 @@ struct CroppingPage: View {
                         
                         HStack {
                             Button(action: {
+                            
                                 if aspectRatio > 1 {
                                     aspectRatio = 1 / aspectRatio
                                     frameHeight = totalGeometry.size.width
