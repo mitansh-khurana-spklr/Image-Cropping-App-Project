@@ -1,237 +1,69 @@
 //
-//  Commented.swift
+//  OldCroppingPage.swift
 //  Project
 //
-//  Created by Mitansh Khurana on 14/06/22.
+//  Created by Mitansh Khurana on 18/06/22.
 //
 
 import Foundation
 
-
-//HStack{
-//
-//                        Spacer()
-//
-//                        Button(action: {
-//                            withAnimation(.default){
-//                                aspectRatio = 4/5
-//                                frameWidth = 350
-//                                frameHeight = frameWidth / aspectRatio
-//                            }
-//
-//                        }) {
-//
-//                            Text("4:5")
-//                                .foregroundColor(.white)
-//                                .fontWeight(.semibold)
-//                                .font(.title2)
-//                                .frame(minWidth: 0, maxWidth: 90, minHeight: 0, maxHeight: 60)
-//                                .background(Color(red: 0.105, green: 0.105, blue: 0.105, opacity: 1.0))
-//                                .cornerRadius(10)
-//
-//                        }
-//                        .padding()
-//
-//
-//                        Spacer()
-//
-//
-//                        Button(action: {
-//                            withAnimation(.default){
-//                                aspectRatio = 1
-//                                frameWidth = 350
-//                                frameHeight = frameWidth / aspectRatio
-//                            }
-//
-//                        }) {
-//                            Text("1:1")
-//                                .font(.title2)
-//                                .fontWeight(.semibold)
-//                                .foregroundColor(.white)
-//                                .frame(minWidth: 0, maxWidth: 90, minHeight: 0, maxHeight: 60)
-//                                .background(Color(red: 0.105, green: 0.105, blue: 0.105, opacity: 1.0))
-//                                .cornerRadius(10)
-//
-//                        }
-//
-//                        Spacer()
-//
-//                        Button(action: {
-//                            withAnimation(.default){
-//                                frameWidth = 350
-//                                frameHeight = 350/1.91
-//                            }
-//
-//                        }) {
-//                            Text("1.91:1")
-//                                .foregroundColor(.white)
-//                                .fontWeight(.semibold)
-//                                .font(.title2)
-//                                .frame(minWidth: 0, maxWidth: 90, minHeight: 0, maxHeight: 60)
-//                                .background(Color(red: 0.105, green: 0.105, blue: 0.105, opacity: 1.0))
-//                                .cornerRadius(10)
-//                        }
-//                        .padding()
-//
-//
-//                        Spacer()
-//                    }
-//
-
-
-
 /*
-let topConstraint1 = imageView1.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: verticalOffset)
-topConstraint1.identifier = Constraint.top.rawValue
-topConstraint1.isActive = true
 
-let leadingConstraint1 = imageView1.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: horizontalOffset)
-leadingConstraint1.identifier = Constraint.leading.rawValue
-leadingConstraint1.isActive = true
-        
+import SwiftUI
 
-let bottomConstraint = imageView1.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -verticalOffset)
-bottomConstraint.identifier = Constraint.bottom.rawValue
-bottomConstraint.isActive = true
+var croppedImage = UIImage()
+var finalImageCropped = UIImage()
+var croppingWidth: CGFloat = 350
+var croppingHeight: CGFloat = 350
+var aspectRatioListHorizontal: [[CGFloat]] = [[1,1], [5,4], [4,3], [3,2], [16, 9], [2, 1]]
+var aspectRatioListVertical: [[CGFloat]] = [[1,1], [4,5], [3,4], [2,3], [9,16], [1,2]]
 
-let trailingConstraint = imageView1.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -horizontalOffset)
-trailingConstraint.identifier = Constraint.trailing.rawValue
-trailingConstraint.isActive = true
- */
+//[[], 4/5, 4/3, 3/2, 16/9, 2/1]
 
-
-/*
-let topConstraint = imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: verticalOffset)
-topConstraint.identifier = Constraint.top.rawValue
-topConstraint.isActive = true
-
-let leadingConstraint = imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: horizontalOffset)
-leadingConstraint.identifier = Constraint.leading.rawValue
-leadingConstraint.isActive = true
-
-let bottomConstraint = imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -verticalOffset)
-bottomConstraint.identifier = Constraint.bottom.rawValue
-bottomConstraint.isActive = true
-
-
-let trailingConstraint = imageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -horizontalOffset)
-trailingConstraint.identifier = Constraint.trailing.rawValue
-trailingConstraint.isActive = true
- */
-
-
-//        let imageView1 = UIImageView()
-//        imageView1.image = uiImage.withAlignmentRectInsets(UIEdgeInsets(top: -verticalOffset, left: -horizontalOffset, bottom: -verticalOffset/2, right: -horizontalOffset/2))
-
-
-//        let imageView = UIImageView()
-//        imageView.image = uiImage.withAlignmentRectInsets(UIEdgeInsets(top: -verticalOffset, left: -horizontalOffset, bottom: -verticalOffset/2, right: -horizontalOffset/2))
-
-
-
-//    @Binding var horizontalOffset: CGFloat
-//    @Binding var verticalOffset: CGFloat
-//    var croppedImage: UIImage
+struct CroppingPage: View {
     
-//    var imageView : UIImageView
-
-
-
-
-
-
-/*
-dummyContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-dummyContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-dummyContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-dummyContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-
-let topConstraint1 = imageView1.topAnchor.constraint(equalTo: dummyContainer.topAnchor)
-topConstraint1.identifier = Constraint.top.rawValue
-topConstraint1.isActive = true
-
-let leadingConstraint1 = imageView1.leadingAnchor.constraint(equalTo: dummyContainer.leadingAnchor)
-leadingConstraint1.identifier = Constraint.leading.rawValue
-leadingConstraint1.isActive = true
-
-
-let bottomConstraint = imageView1.bottomAnchor.constraint(equalTo: dummyContainer.bottomAnchor)
-bottomConstraint.identifier = Constraint.bottom.rawValue
-bottomConstraint.isActive = true
-
-let trailingConstraint = imageView1.trailingAnchor.constraint(equalTo: dummyContainer.trailingAnchor)
-trailingConstraint.identifier = Constraint.trailing.rawValue
-trailingConstraint.isActive = true
- */
-
-
-
-/*
-dummyContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-dummyContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-dummyContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-dummyContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-
-
-
-let topConstraint = imageView.topAnchor.constraint(equalTo: dummyContainer.topAnchor)
-topConstraint.identifier = Constraint.top.rawValue
-topConstraint.isActive = true
-
-let leadingConstraint = imageView.leadingAnchor.constraint(equalTo: dummyContainer.leadingAnchor)
-leadingConstraint.identifier = Constraint.leading.rawValue
-leadingConstraint.isActive = true
-
-let bottomConstraint = imageView.bottomAnchor.constraint(equalTo: dummyContainer.bottomAnchor)
-bottomConstraint.identifier = Constraint.bottom.rawValue
-bottomConstraint.isActive = true
-
-
-let trailingConstraint = imageView.trailingAnchor.constraint(equalTo: dummyContainer.trailingAnchor)
-trailingConstraint.identifier = Constraint.trailing.rawValue
-trailingConstraint.isActive = true
- */
-
-
-//        func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//            let zoomScale = scrollView.zoomScale
-//            print("zoomScale = \(zoomScale)")
-//            print("xoffset = \(scrollView.contentOffset.x)")
-//            print("yoffset = \(scrollView.contentOffset.y)")
-//
-//            guard
-//                let topConstraint = topConstraint,
-//                let leadingConstraint = leadingConstraint,
-//                let trailingConstraint = trailingConstraint,
-//                let bottomConstraint = bottomConstraint,
-//                let imageSize = imageSize,
-//                let viewSize = viewSize
-//            else {
-//                return
-//            }
-//            topConstraint.constant = max((viewSize.height - (imageSize.height * zoomScale)) / 2.0, 0.0)
-//            leadingConstraint.constant = max((viewSize.width - (imageSize.width * zoomScale)) / 2.0, 0.0)
-//            bottomConstraint.constant = verticalOffset!
-//            trailingConstraint.constant = horizontalOffset!
-//        }
-
-
-
-
-
-//        let widthScale = frameWidth / fittingRect.width
-//        let heightScale = frameHeight / fittingRect.height
-//        if rotateHelper.rotateByAngle != 90 && rotateHelper.rotateByAngle != 180 && rotateHelper.rotateByAngle != 270 && rotateHelper.rotateByAngle != 0 {
-//            return max(widthScale, heightScale) * 3
-//        }
-
-
-
-
-
-
-
-
+    @Binding var uiImage: UIImage
+    
+    @State var viewState = CGSize.zero
+    
+    @State var rotation : Float = 0.0
+    
+    
+    
+    @State var frameWidth : CGFloat = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height/2)
+    @State var frameHeight : CGFloat = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height/2)
+    
+    
+    @State var aspectRatio: CGFloat = 1
+    @State var aspectRatioSize: CGSize = CGSize(width: 1, height: 1)
+    
+    
+    @State var portrait: Bool = true
+    
+    @State var horizontalOffset = CGFloat(0)
+    @State var verticalOffset = CGFloat(0)
+    
+    
+    @EnvironmentObject var rotateHelper: RotateHelper
+    
+    @State var alignment: String = "Horiontal"
+    @State var aspectRatioList: [[CGFloat]] = [[1,1], [5,4], [4,3], [3,2], [16, 9], [2, 1]]
+    
+    @State var isShowingFilterView = false
+    
+//    @State var rotatedBoxWidth: CGFloat
+//    @State var rotatedBoxHeight: CGFloat
+    
+    
+    var body: some View {
+        
+        GeometryReader{ totalGeometry in
+            
+                ZStack {
+                    Color.black
+                        .edgesIgnoringSafeArea(.vertical)
+                    
+                    VStack{
 //                        HStack{
 //                            Button(action: {}) {
 //                                Image(systemName: "pencil.slash")
@@ -288,111 +120,11 @@ trailingConstraint.isActive = true
 //                        Spacer()
 //                        Spacer()
 //                        Spacer()
-
-
-
-
-
-
-
-//                             .gesture(RotationGesture().onChanged{angle in
-//                                 rotation += Float(angle.degrees)
-//                             })
-//                             .rotationEffect(.degrees(rotation))
-//                             .frame(width: frameWidth, height: frameHeight)
-//                             .border(.white)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-import SwiftUI
-
-var croppedImage = UIImage()
-var finalImageCropped = UIImage()
-var croppingWidth: CGFloat = 350
-var croppingHeight: CGFloat = 350
-var aspectRatioListHorizontal: [[CGFloat]] = [[1,1], [5,4], [4,3], [3,2], [16, 9], [2, 1]]
-var aspectRatioListVertical: [[CGFloat]] = [[1,1], [4,5], [3,4], [2,3], [9,16], [1,2]]
-
-//[[], 4/5, 4/3, 3/2, 16/9, 2/1]
-
-struct CroppingPage: View {
-    
-    @Binding var uiImage: UIImage
-    
-    @State var viewState = CGSize.zero
-    
-    @State var rotation : Float = 0.0
-    
-    
-    
-    @State var frameWidth : CGFloat = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height/2)
-    @State var frameHeight : CGFloat = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height/2)
-    @State var aspectRatio: CGFloat = 1
-    @State var portrait: Bool = true
-    
-    @State var horizontalOffset = CGFloat(0)
-    @State var verticalOffset = CGFloat(0)
-    
-    
-    @EnvironmentObject var rotateHelper: RotateHelper
-    
-    @State var alignment: String = "Horiontal"
-    @State var aspectRatioList: [[CGFloat]] = [[1,1], [5,4], [4,3], [3,2], [16, 9], [2, 1]]
-    @State private var rotateState: Double = 0
-    @State private var prevRot : Double = 0;
-   // @State var setStart = true
-    
-    var body: some View {
-        
-        GeometryReader{ totalGeometry in
-            
-                ZStack {
-                    Color.black
-                        .edgesIgnoringSafeArea(.vertical)
-                    
-                    VStack{
-
                         
                         Group{
                              ZStack {
                                  GeometryReader { geometry in
-                                     ZoomableView(uiImage: $uiImage, viewSize: geometry.size, frameWidth: $frameWidth, frameHeight: $frameHeight, rotation: $rotation)
-//                                         .rotationEffect(Angle(degrees: self.rotateState))
-//                                         .gesture(RotationGesture()
-//                                                         .onChanged { value in
-//                                             //if setStart{
-//                                             let currRot = value.degrees
-//                                             let diff = currRot - prevRot
-//                                             self.rotateState += diff
-//                                             prevRot = currRot
-//                                                // setStart = false
-//                                            // }
-//
-//                                                         }
-//                                                    .onEnded({ endValue in
-//                                            // self.rotateState += endValue.degrees-startRot
-//                                           //  setStart = true
-//                                             prevRot = 0
-//                                         })
-//                                                     )
+                                     ZoomableView(uiImage: $uiImage, viewSize: geometry.size, frameWidth: $frameWidth, frameHeight: $frameHeight, rotation: $rotation, aspectRatioSize: $aspectRatioSize)
                                  }
     //                             .gesture(RotationGesture().onChanged{angle in
     //                                 rotation += Float(angle.degrees)
@@ -440,7 +172,7 @@ struct CroppingPage: View {
                                 trailing:
                                     Button(action: {
                                         let CGrotation = CGFloat(rotateHelper.rotateByAngle)
-                                        let radians = rotateState * Double.pi/180
+                                        let radians = CGrotation * Double.pi/180
                                         let newImage = uiImage.rotate(radians: Float(radians))
                                         croppedImage = newImage!
                                         croppingWidth = frameWidth
@@ -452,8 +184,8 @@ struct CroppingPage: View {
                                     }) {
                                         Text("Next")
                                             .foregroundColor(.blue)
-                                            .fontWeight(.semibold)
-                                            .font(.title3)
+//                                            .fontWeight(.semibold)
+//                                            .font(.title3)
                                     }
                              )
                             
@@ -540,10 +272,24 @@ struct CroppingPage: View {
                                         .font(.title)
                                         .offset(y: -5)
                                 }
+                                
+                                
+                                Button(action: {
+                                    isShowingFilterView = true
+                                }) {
+                                    Image(systemName: "camera.filters")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .offset(y: -5)
+                                }
                             }
                             .padding(.bottom)
         //
                             
+                            NavigationLink(destination: InbuiltFilterView(), isActive: $isShowingFilterView) {
+                                EmptyView()
+                                    
+                            }
                             
                             
                             HStack {
@@ -612,6 +358,8 @@ struct CroppingPage: View {
                                                         
                                                 withAnimation(.default){
                                                         aspectRatio = aspect[0]/aspect[1]
+                                                    aspectRatioSize.width = aspect[0]
+                                                    aspectRatioSize.height = aspect[1]
                                                             
                                                         
                                                         if(aspectRatio == 1){
@@ -662,6 +410,9 @@ struct CroppingPage: View {
                                                         
                                                 withAnimation(.default){
                                                         aspectRatio = aspect[0]/aspect[1]
+                                                    aspectRatioSize.width = aspect[0]
+                                                    aspectRatioSize.height = aspect[1]
+                                                            
         
                                                         frameHeight = min(totalGeometry.size.width, totalGeometry.size.height/2)
                                                             frameWidth = frameHeight * aspectRatio
@@ -725,98 +476,3 @@ struct CroppingPage: View {
 
 */
 
-
-
-
-
-
-
-
-/*
-Button(action: {
-
-    withAnimation(.default){
-        if aspectRatio > 1 {
-            aspectRatio = 1 / aspectRatio
-            frameHeight = min(totalGeometry.size.width, totalGeometry.size.height/2)
-            frameWidth = frameHeight * aspectRatio
-            
-            verticalOffset = (totalGeometry.size.height - frameHeight)/2
-            
-            horizontalOffset = (totalGeometry.size.width - frameWidth)/2
-            
-        }
-        portrait = true
-    }
-    
-}) {
-    Image(systemName: "rectangle.portrait")
-}
-.foregroundColor(portrait ? .yellow: .white)
-.font(.title)
-
-Button(action: {
-    
-    withAnimation(.default) {
-        if aspectRatio < 1{
-            aspectRatio = 1 / aspectRatio
-            frameWidth = totalGeometry.size.width
-            frameHeight = frameWidth/aspectRatio
-            
-            verticalOffset = (totalGeometry.size.height - frameHeight)/2
-            
-            horizontalOffset = (totalGeometry.size.width - frameWidth)/2
-            
-        }
-        portrait = false
-    }
-    
-}) {
-    Image(systemName: "rectangle")
-}
-.foregroundColor(portrait ? .white: .yellow)
-.font(.title)
-
-*/
-
-
-
-
-
-
-
-
-
-//                                 .gesture(RotationGesture().onChanged { value in
-//                                    let currRot = value.degrees
-//                                    let diff = currRot - prevRot
-//                                    rotateHelper.rotateByAngle += Float(diff)
-//                                     if rotateHelper.rotateByAngle >= 360{
-//                                         rotateHelper.rotateByAngle -= 360
-//                                     }
-//                                     if(rotateHelper.rotateByAngle < 0){
-//                                         rotateHelper.rotateByAngle += 360
-//                                     }
-//                                    prevRot = currRot
-//                                 }.onEnded({ value in
-//                                     prevRot = 0
-//                                 }))
-                                 
-                                 
-                                 
-                                 
-//                                 .rotationEffect(Angle(degrees: Double(self.rotateState)))
-//                                 .gesture(RotationGesture().onChanged { value in
-//                                        //if setStart{
-//                                        let currRot = value.degrees
-//                                        let diff = currRot - prevRot
-//                                     self.rotateState += Float(diff)
-//                                        prevRot = currRot
-//                                     rotateHelper.rotateByAngle += Float(diff)
-//                                        // setStart = false
-//                                        // }
-//                                        }.onEnded({ endValue in
-//                                        prevRot = 0
-//                                                                          })
-//                                                                                      )
-                                 

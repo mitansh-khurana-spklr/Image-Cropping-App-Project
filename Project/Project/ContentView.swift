@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var rotateHelper = RotateHelper()
     var body: some View {
-        CroppingPage()
+        SelectImageView()
+            .environmentObject(rotateHelper)
     }
 }
 
